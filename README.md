@@ -26,8 +26,8 @@ The app's functionality includes:
 (Example) Landing Page
 :-------------------------:
 ![Landing Page](/github-images/wireframes/landing-page-wireframe.jpg)
-Register Page
-![Register Page](/github-images/wireframes/register-page-wireframe.png)
+Main Page
+![Register Page](/github-images/wireframes/main-page-wireframe.jpg)
 
 ## 6. API Documentation (to do later)
 API Documentation details:
