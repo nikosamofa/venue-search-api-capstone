@@ -25,7 +25,7 @@ The app's functionality includes:
 ### 5. Wireframes (to do now)
 (Example) Landing Page
 :-------------------------:
-![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
+![Landing Page](/github-images/wireframes/landing-page-wireframe.jpg)
 Register Page
 ![Register Page](/github-images/wireframes/register-page-wireframe.png)
 
