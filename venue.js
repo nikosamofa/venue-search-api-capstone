@@ -24,6 +24,7 @@ const searchPage = `  <section class="container" id="js-search-page">
 <div class="item">
     <form id="js-search-form" class="search-form">
         <h2>The Venue Search App</h2>
+
         <label for="categories">i'm looking for</label>
         <select name="categories" id="categories">
                        <option value="food">food</option>
@@ -31,11 +32,14 @@ const searchPage = `  <section class="container" id="js-search-page">
                        <option value="lounge">lounge</option>
                        <option value="outdoor">outdoors</option>
                    </select>
+
         <label for="location">Near</label>
         <input type="text" name="location">
-        <label for="radius">within</label>
-        <input type="number" name="radius">                    
-        <input type="submit" value="Search">
+
+        <label for="radius">Within Miles</label>
+        <input type="number" name="radius"min="1" max="60"> 
+
+        <input type="submit" id="js-search" value="Search">
     </form>
 </div>
 <div class="item" hidden>
@@ -61,7 +65,13 @@ function changePage() {
     })
 }
 
+//function that listens to search submissions
+function venueSearch(event){
+    $('#js-main-body').on('submmit','#js-search-form', event =>{
+        console.log('test search')
+    })
 
+}
 //function to make get requests to the API 
 //functions that make get requests based on the parameters submitted
 //function to clear the search parameters 
