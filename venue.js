@@ -24,8 +24,17 @@ const searchPage = `  <section class="container" id="js-search-page">
 <div class="item">
     <form id="js-search-form" class="search-form">
         <h2>The Venue Search App</h2>
-        <label for="city">City</label>
-        <input type="text" >
+        <label for="categories">i'm looking for</label>
+        <select name="categories" id="categories">
+                       <option value="food">food</option>
+                       <option value="resturant">Resturants</option>
+                       <option value="lounge">lounge</option>
+                       <option value="outdoor">outdoors</option>
+                   </select>
+        <label for="location">Near</label>
+        <input type="text" name="location">
+        <label for="radius">within</label>
+        <input type="number" name="radius">                    
         <input type="submit" value="Search">
     </form>
 </div>
