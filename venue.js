@@ -1,6 +1,7 @@
 'use strict';
 
 const url = 'https://api.foursquare.com/v2/venues/search'
+const uri = 'https://api.foursquare.com/v2/venues/'
 
 // page const variables to be rendered 
 //page 1 landing page
@@ -13,7 +14,7 @@ const startPage = `<section class="container" id="js-startPage">
             the venue search app is designed to helps you finde the perfect venue to experience this
             cherished
             moments.
-            with the help of advanced technologies and a vast database of locations within your area, our
+            with the help of advanced technologies and a vast responseJson2base of locations within your area, our
             app
             will help you norrow down the perfect venue that meets
             your needs and matches your taste</p>
@@ -38,14 +39,14 @@ const searchPage = `<section class="container" id="js-search-page">
                        <option value="4d4b7105d754a06377d81259">Outdoors</option>
                    </select>
 
-        <label for="location">Near</label>
-        <input type="text" name="location" id="js-location">
+        <label for="location">City</label>
+        <input type="text" name="location" id="js-location" placeholder="New York">
 
         <label for="radius">Within</label>
-        <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="meters"> 
+        <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles"> 
 
         <label for="options">Options</label>
-        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10"> 
+        <input type="number" name="options" min="1" max="20" id="js-options" placeholder="10"> 
 
         <input type="submit" id="js-search" value="Search">
     </form>
@@ -80,8 +81,8 @@ function venueSearch() {
     $('#js-main-body').on('submit', '.search-form', event => {
         event.preventDefault();
         const place = $('#js-location').val()
-        const withinRadius = Number($('#js-radius').val())*1609.344;
-        const category =$('#js-categories').val();
+        const withinRadius = Number($('#js-radius').val()) * 1609.344;
+        const category = $('#js-categories').val();
         const numOfOptions = $('#js-options').val();
         console.log(place, withinRadius, category, numOfOptions);
         getVenues(category, place, withinRadius, numOfOptions)
@@ -109,8 +110,10 @@ function getVenues(category, place, withinRadius, numOfOptions) {
         'client_id': `UUOCIAQLG2H1U0BBI1XWV3CX0T25YDKRHIRK2YDB41KHAD52`,
         'client_secret': `SR35X0IUEXOBKQHF5J1M5VXNCKQTKI45RVFHB0ZQBBF4TE2P`
     };
+
     const queryString = queryFormat(params);
     const searchUrl = url + '?' + queryString;
+
     console.log(searchUrl);
     fetch(searchUrl)
         .then(response => {
@@ -119,32 +122,66 @@ function getVenues(category, place, withinRadius, numOfOptions) {
             }
             else { throw new Error(response.statusText) }
         })
-        .then(responseJson => displayResults(responseJson))
+        .then(responseJson => Results(responseJson))
         .catch(error => console.log(error));
 };
 
 
 // function to display results and fetches results photos from the GET venue photos endpoint.
-function displayResults(responseJson) {
+function Results(responseJson) {
 
     $('#js-result-list').empty();
-    if (responseJson.response.venues.length == 0 || responseJson.response.venues.length == [ ]) {
+    if (responseJson.response.venues.length == 0 || responseJson.response.venues.length == []) {
         $('#js-result-list').append(
             `<li>            
             <p>No results</p>
             </li>`)
     }
     else {
+        const param = {
+            v: 20201020,
+            'client_id': `UUOCIAQLG2H1U0BBI1XWV3CX0T25YDKRHIRK2YDB41KHAD52`,
+            'client_secret': `SR35X0IUEXOBKQHF5J1M5VXNCKQTKI45RVFHB0ZQBBF4TE2P`
+        };
+        const queryString2 = queryFormat(param);
+
         for (let i = 0; i < responseJson.response.venues.length; i++) {
 
-            $('#js-result-list').append(
-                `<li>   
+            const searchUrl2 = uri + responseJson.response.venues[i].id + '?' + queryString2;
+            console.log(searchUrl2);
+            fetch(searchUrl2)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    else { throw new Error(response.statusText) }
+                })
+                .then(responseJson2 => {
+                    console.log(responseJson2);
+                    photoURL(responseJson2);
+                })
+                .catch(error => console.log(error));
+            function photoURL(responseJson2) {
+                const photoPrefix = `${responseJson2.response.venue.bestPhoto.prefix}`;
+                const photoSuffix = `${responseJson2.response.venue.bestPhoto.suffix}`;
+                const photoWidth = `${responseJson2.response.venue.bestPhoto.width}`;
+                const photoHeight = `${responseJson2.response.venue.bestPhoto.height}`;
+                let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+
+                $('#js-result-list').append(
+                    `<li>   
             <h3> ${responseJson.response.venues[i].name}</h3>
-            <img src="#" alt="Picture of venue">
+            <img src="${photoUri}" alt="Picture of venue">
             <p>description</p>
             <p>${responseJson.response.venues[i].location.formattedAddress}</p>
             </hr>
             </li>`);
+
+
+            }
+
+
+
         }
         $('#js-results').removeAttr('hidden');
     }
