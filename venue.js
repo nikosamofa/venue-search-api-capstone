@@ -14,7 +14,7 @@ const startPage = `<section class="container" id="js-startPage">
             the venue search app is designed to helps you finde the perfect venue to experience this
             cherished
             moments.
-            with the help of advanced technologies and a vast responseJson2base of locations within your area, our
+            with the help of advanced technologies and a vast responseJsonForPhotosbase of locations within your area, our
             app
             will help you norrow down the perfect venue that meets
             your needs and matches your taste</p>
@@ -25,32 +25,34 @@ const startPage = `<section class="container" id="js-startPage">
 
 
 //page 2 search page
-const searchPage = `<section class="container" id="js-search-page">
-<div class="item">
+const searchPage = `<section>
+<div class="class="search-container"">
+<div class="search-item">
     <form id="js-search-form" class="search-form">
         <h2>The Venue Search App</h2>
 
         <label for="categories">i'm searching for</label>
         <select name="categories" id="js-categories">
-                       <option value="4d4b7104d754a06370d81259">Art & Culture</option>
-                       <option value="4d4b7105d754a06374d81259">Restaurants</option>
-                       <option value="4d4b7105d754a06376d81259">Nightlife</option>
-                       <option value="4d4b7105d754a06373d81259">Event</option>
-                       <option value="4d4b7105d754a06377d81259">Outdoors</option>
-                   </select>
+            <option value="4f4528bc4b90abdf24c9de85">Sports</option>
+            <option value="4d4b7104d754a06370d81259">Art & Culture</option>
+            <option value="4d4b7105d754a06374d81259">Restaurants</option>
+            <option value="4d4b7105d754a06376d81259">Nightlife</option>
+            <option value="4d4b7105d754a06373d81259">Event</option>
+            <option value="4d4b7105d754a06377d81259">Outdoors</option>
+        </select>
 
         <label for="location">City</label>
-        <input type="text" name="location" id="js-location" placeholder="New York">
+        <input type="text" name="location" id="js-location" placeholder="New York" value="New York">
 
         <label for="radius">Within</label>
-        <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles"> 
+        <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="2"> 
 
         <label for="options">Options</label>
-        <input type="number" name="options" min="1" max="20" id="js-options" placeholder="10"> 
+        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="10"> 
 
         <input type="submit" id="js-search" value="Search">
     </form>
-</div>
+    </div>
 </section>
 <section>
     <div class="item" id='js-results' hidden>
@@ -58,7 +60,9 @@ const searchPage = `<section class="container" id="js-search-page">
     
         </ul>
     </div>
-    </section>`;
+    </section>
+</div>
+`;
 
 
 //a function that loads the landing page into the DOM when loaded with the begin search button
@@ -128,10 +132,10 @@ function getVenues(category, place, withinRadius, numOfOptions) {
 
 
 // function to display results and fetches results photos from the GET venue photos endpoint.
-function Results(responseJson) {
+function Results(responseJsonForDetails) {
 
     $('#js-result-list').empty();
-    if (responseJson.response.venues.length == 0 || responseJson.response.venues.length == []) {
+    if (responseJsonForDetails.response.venues.length == 0 || responseJsonForDetails.response.venues.length == []) {
         $('#js-result-list').append(
             `<li>            
             <p>No results</p>
@@ -145,9 +149,9 @@ function Results(responseJson) {
         };
         const queryString2 = queryFormat(param);
 
-        for (let i = 0; i < responseJson.response.venues.length; i++) {
+        for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
 
-            const searchUrl2 = uri + responseJson.response.venues[i].id + '?' + queryString2;
+            const searchUrl2 = uri + responseJsonForDetails.response.venues[i].id + '?' + queryString2;
             console.log(searchUrl2);
             fetch(searchUrl2)
                 .then(response => {
@@ -156,36 +160,70 @@ function Results(responseJson) {
                     }
                     else { throw new Error(response.statusText) }
                 })
-                .then(responseJson2 => {
-                    console.log(responseJson2);
-                    photoURL(responseJson2);
+                .then(responseJsonForPhotos => {
+                    console.log(responseJsonForPhotos);
+                    photoURL(responseJsonForPhotos, responseJsonForDetails);
                 })
                 .catch(error => console.log(error));
-            function photoURL(responseJson2) {
-                const photoPrefix = `${responseJson2.response.venue.bestPhoto.prefix}`;
-                const photoSuffix = `${responseJson2.response.venue.bestPhoto.suffix}`;
-                const photoWidth = `${responseJson2.response.venue.bestPhoto.width}`;
-                const photoHeight = `${responseJson2.response.venue.bestPhoto.height}`;
-                let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
-
-                $('#js-result-list').append(
-                    `<li>   
-            <h3> ${responseJson.response.venues[i].name}</h3>
-            <img src="${photoUri}" alt="Picture of venue">
-            <p>description</p>
-            <p>${responseJson.response.venues[i].location.formattedAddress}</p>
-            </hr>
-            </li>`);
-
-
-            }
-
-
 
         }
-        $('#js-results').removeAttr('hidden');
+
     }
 };
+
+
+//returns empty string if the string is NOT valid
+function checkString(inputString) {
+    let outputText = inputString;
+    if (inputString === undefined) {
+        outputText = "No details available";
+    }
+    if (inputString == null) {
+        outputText = "No details available";
+    }
+    return outputText;
+}
+
+
+//returns / if the url is NOT valid
+function checkURL(inputURL) {
+    let outputURL = inputURL;
+    if (inputURL === undefined) {
+        outputURL = "/";
+    }
+    if (inputURL == null) {
+        outputURL = "/";
+    }
+    return outputURL;
+}
+
+
+function photoURL(responseJsonForPhotos, responseJsonForDetails) {
+    const photoPrefix = `${responseJsonForPhotos.response.venue.bestPhoto.prefix}`;
+    const photoSuffix = `${responseJsonForPhotos.response.venue.bestPhoto.suffix}`;
+    const photoWidth = `${responseJsonForPhotos.response.venue.bestPhoto.width}`;
+    const photoHeight = `${responseJsonForPhotos.response.venue.bestPhoto.height}`;
+    let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+    for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
+        $('#js-result-list').append(`
+                <li>   
+                    <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
+                    <img src="${photoUri}" alt="Picture of venue">
+                    <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
+                    <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
+                    <hr />
+                    <p> Visit: 
+                        <a href="${checkURL(responseJsonForPhotos.response.venue.url)}">
+                            ${checkString(responseJsonForPhotos.response.venue.url)}
+                        </a>
+                    </p>
+                </li>
+            `);
+    }
+    $('#js-results').removeAttr('hidden');
+}
+
+
 //function to clear the search parameters 
 //callback function that calls all functions 
 

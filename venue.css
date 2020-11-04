@@ -43,3 +43,50 @@ input[type="submit"]{
 input {
     cursor: pointer;
   }
+
+  /* Styling for the search page */
+
+  .search-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 18%;
+    border: 2px black solid; 
+
+}
+
+.search-item{
+    flex:1;
+    padding-left: 30px;
+
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-form p{
+    text-align: justify;
+}
+
+input[type="submit"]{
+    margin:10px 45%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px white solid;
+    outline-style:none;
+}
+
+input {
+    cursor: pointer;
+
+  }
+/* input [type='text']{
+
+
+} */
+
+#js-result-list img{
+    width: 50%;
+}
+
