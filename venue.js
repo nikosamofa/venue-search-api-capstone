@@ -25,9 +25,8 @@ const startPage = `<section class="container" id="js-startPage">
 
 
 //page 2 search page
-const searchPage = `<section>
-<div class="class="search-container"">
-<div class="search-item">
+const searchPage = `<div class="container">
+<div class="item">
     <form id="js-search-form" class="search-form">
         <h2>The Venue Search App</h2>
 
@@ -52,16 +51,13 @@ const searchPage = `<section>
 
         <input type="submit" id="js-search" value="Search">
     </form>
-    </div>
-</section>
-<section>
-    <div class="item" id='js-results' hidden>
-        <ul id="js-result-list">
-    
-        </ul>
-    </div>
-    </section>
 </div>
+<div class="item" id='js-results' hidden>
+     <ul id="js-result-list">
+    
+     </ul>
+</div>
+</div>  
 `;
 
 
@@ -165,7 +161,6 @@ function Results(responseJsonForDetails) {
                     photoURL(responseJsonForPhotos, responseJsonForDetails);
                 })
                 .catch(error => console.log(error));
-
         }
 
     }
