@@ -6,26 +6,25 @@ const uri = 'https://api.foursquare.com/v2/venues/'
 // page const variables to be rendered 
 //page 1 landing page
 const startPage = `<section class="container" id="js-startPage">
-<div class="item">
+<div class="item start-">
     <form id="js-start-form" class="start-form">
-        <h2>The Venue Search App</h2>
+        <legend>Venue App.</legend>
         <p>Are planing a wedding, a dinner, a surprise birthday party or just time to chill with friends and
             family ? you've came to the right place!
             the venue search app is designed to helps you finde the perfect venue to experience this
-            cherished
-            moments.
-            with the help of advanced technologies and a vast responseJsonForPhotosbase of locations within your area, our
+            cherished moments. with the help of advanced technologies and a vast database of locations within your area, our
             app
             will help you norrow down the perfect venue that meets
             your needs and matches your taste</p>
-        <input type="submit" value="Start Search" class="js-start-search">
+        <input type="submit" value="Search" class="js-start-search search-button">
     </form>
 </div>
 </section>`;
 
 
 //page 2 search page
-const searchPage = `<div class="container">
+const searchPage = 
+`<div class="container">
 <div class="item">
     <form id="js-search-form" class="search-form">
         <label for="categories">i'm searching for</label>
@@ -45,17 +44,18 @@ const searchPage = `<div class="container">
         <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="2"> 
 
         <label for="options">Options</label>
-        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="10"> 
+        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="3"> 
 
         <input type="submit" id="js-search" value="Search">
     </form>
 </div>
-<div class="item" id='js-results' hidden>
+
+<div class="result-list item-double" id='js-results' hidden>
      <ul id="js-result-list">
     
      </ul>
 </div>
-</div>  
+</div>
 `;
 
 
