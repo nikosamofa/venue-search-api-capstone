@@ -9,9 +9,8 @@ const startPage = `<section class="container" id="js-startPage">
 <div class="item start-">
     <form id="js-start-form" class="start-form">
         <legend>Venue<br>App.</legend>
-        <p>Are planing a wedding, a dinner, a surprise birthday party or just time to chill with friends and
-            family ? you've came to the right place!
-            the venue search app is designed to helps you finde the perfect venue to experience this
+        <p>Looking for a venue for a wedding, dinner date, a surprise birthday party or a chillout spot for friends and
+            family ? Look no further, this app is designed to helps you finde the perfect venue to experience this
             cherished moments. with the help of advanced technologies and a vast database of locations within your area, our
             app
             will help you norrow down the perfect venue that meets
