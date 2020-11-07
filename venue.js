@@ -28,8 +28,6 @@ const startPage = `<section class="container" id="js-startPage">
 const searchPage = `<div class="container">
 <div class="item">
     <form id="js-search-form" class="search-form">
-        <h2>The Venue Search App</h2>
-
         <label for="categories">i'm searching for</label>
         <select name="categories" id="js-categories">
             <option value="4f4528bc4b90abdf24c9de85">Sports</option>
