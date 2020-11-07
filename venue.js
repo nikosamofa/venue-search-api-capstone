@@ -9,12 +9,10 @@ const startPage = `<section class="container" id="js-startPage">
 <div class="item start-">
     <form id="js-start-form" class="start-form">
         <legend>Venue<br>App.</legend>
-        <p>Looking for a venue for a wedding, dinner date, a surprise birthday party or a chillout spot for friends and
-            family ? Look no further, this app is designed to helps you finde the perfect venue to experience this
-            cherished moments. with the help of advanced technologies and a vast database of locations within your area, our
-            app
-            will help you norrow down the perfect venue that meets
-            your needs and matches your taste</p>
+        <p>Are you looking for a location for a wedding, dinner date, a surprise birthday party or a chillout spot for friends and
+            family ? Look no further, this app is designed to helps you finde the perfect venue to experience these
+            cherished moments. With the help of advanced technologies and a vast database of locations within your area, our
+            app will help you narrow down to the perfect venue that meets your needs and matches your taste</p>
         <input type="submit" value="Search" class="js-start-search search-button">
     </form>
 </div>
