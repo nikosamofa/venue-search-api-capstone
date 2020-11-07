@@ -8,7 +8,7 @@ const uri = 'https://api.foursquare.com/v2/venues/'
 const startPage = `<section class="container" id="js-startPage">
 <div class="item start-">
     <form id="js-start-form" class="start-form">
-        <legend>Venue App.</legend>
+        <legend>Venue<br>App.</legend>
         <p>Are planing a wedding, a dinner, a surprise birthday party or just time to chill with friends and
             family ? you've came to the right place!
             the venue search app is designed to helps you finde the perfect venue to experience this
@@ -27,8 +27,8 @@ const searchPage =
 `<div class="container">
 <div class="item">
     <form id="js-search-form" class="search-form">
-        <label for="categories">i'm searching for</label>
-        <select name="categories" id="js-categories">
+        <label for="categories">Search you're Venue</label>
+        <select name="categories" id="js-categories" >
             <option value="4f4528bc4b90abdf24c9de85">Sports</option>
             <option value="4d4b7104d754a06370d81259">Art & Culture</option>
             <option value="4d4b7105d754a06374d81259">Restaurants</option>
@@ -199,17 +199,18 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
     let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
     for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
         $('#js-result-list').append(`
-                <li>   
-                    <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
-                    <img src="${photoUri}" alt="Picture of venue">
-                    <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
-                    <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
-                    <hr />
-                    <p> Visit: 
-                        <a href="${checkURL(responseJsonForPhotos.response.venue.url)}">
-                            ${checkString(responseJsonForPhotos.response.venue.url)}
-                        </a>
-                    </p>
+                <li>  
+                    <div class="item"> 
+                        <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
+                        <img src="${photoUri}" alt="Picture of venue">
+                        <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
+                        <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
+                        <p> Visit: 
+                            <a href="${checkURL(responseJsonForPhotos.response.venue.url)}">
+                                ${checkString(responseJsonForPhotos.response.venue.url)}
+                            </a>
+                        </p>
+                    </div>
                 </li>
             `);
     }
