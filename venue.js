@@ -29,8 +29,8 @@ const searchPage =
     <form id="js-search-form" class="search-form">
         <label for="categories">Search your Venue</label>
         <select name="categories" id="js-categories" >
-            <option value="4bf58dd8d48988d1ed941735">Spa</option>
             <option value="4d4b7104d754a06370d81259">Art & Entertainment</option>
+            <option value="4bf58dd8d48988d1ed941735">Spa</option>            
             <option value="4bf58dd8d48988d121941735">Lounge</option>
             <option value="4d4b7105d754a06374d81259">Restaurants</option>
             <option value="4bf58dd8d48988d11e941735">Cocktail Bar</option>
@@ -39,7 +39,7 @@ const searchPage =
         </select>
 
         <label for="location">City</label>
-        <input type="text" name="location" id="js-location" placeholder="New York" value="New York">
+        <input type="text" name="location" id="js-location" placeholder="New York" value="Baltimore">
 
         <label for="radius">Radius of</label>
         <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="2"> 

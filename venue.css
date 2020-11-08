@@ -109,7 +109,8 @@ header h1 {
     text-align: justify;
     font-family: 'Open Sans', sans-serif;
     color: rgb(15, 3, 3);
-    font-size: 12px;
+    font-size: 14px;
+    
 }
 
 .start-form input[type="submit"], .search-form input[type="submit"] {
@@ -136,7 +137,7 @@ input {
 }
 
 div.result-list {
-    height: 600px;
+    height: 650px;
     width: 100%;
     FLOAT: left;
     overflow: scroll;
@@ -145,7 +146,13 @@ div.result-list {
 .result-ul li h3, p {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
+
 }
+
+.result-ul li p{
+    font-size: 14px;
+}
+
 
 .result-ul li p {
     font-family: 'Open Sans', sans-serif;
@@ -263,6 +270,9 @@ div.result-list {
         margin: 0 auto;
     }
 }
+
+
+
 
 /*large desktop*/
 
