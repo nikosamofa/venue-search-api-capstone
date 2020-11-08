@@ -9,7 +9,7 @@ const startPage = `<section class="container" id="js-startPage">
 <div class="item start">
     <form id="js-start-form" class="start-form">
         <legend>Venue<br>App.</legend>
-        <p>Are you looking for a location for a wedding, a dinner date, a surprise birthday party or a chillout spot for friends and
+        <p>Are you looking for a location for a dinner date, a surprise birthday party or a chillout spot for friends and
             family ? Look no further, this app is designed to helps you find the perfect venue to experience these
             cherished moments. With the help of advanced technologies and a vast database of locations within your area, our
             app will help you narrow down to the perfect venue that meets your needs and matches your taste</p>
@@ -29,12 +29,13 @@ const searchPage =
     <form id="js-search-form" class="search-form">
         <label for="categories">Search your Venue</label>
         <select name="categories" id="js-categories" >
-            <option value="4f4528bc4b90abdf24c9de85">Sports</option>
-            <option value="4d4b7104d754a06370d81259">Art & Culture</option>
+            <option value="4bf58dd8d48988d1ed941735">Spa</option>
+            <option value="4d4b7104d754a06370d81259">Art & Entertainment</option>
+            <option value="4bf58dd8d48988d121941735">Lounge</option>
             <option value="4d4b7105d754a06374d81259">Restaurants</option>
-            <option value="4d4b7105d754a06376d81259">Nightlife</option>
-            <option value="4d4b7105d754a06373d81259">Event</option>
-            <option value="4d4b7105d754a06377d81259">Outdoors</option>
+            <option value="4bf58dd8d48988d11e941735">Cocktail Bar</option>
+            <option value="4bf58dd8d48988d120941735">Karaoke</option>
+            
         </select>
 
         <label for="location">City</label>
