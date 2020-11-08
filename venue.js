@@ -6,15 +6,16 @@ const uri = 'https://api.foursquare.com/v2/venues/'
 // page const variables to be rendered 
 //page 1 landing page
 const startPage = `<section class="container" id="js-startPage">
-<div class="item start-">
+<div class="item start">
     <form id="js-start-form" class="start-form">
         <legend>Venue<br>App.</legend>
         <p>Are you looking for a location for a wedding, a dinner date, a surprise birthday party or a chillout spot for friends and
             family ? Look no further, this app is designed to helps you find the perfect venue to experience these
             cherished moments. With the help of advanced technologies and a vast database of locations within your area, our
             app will help you narrow down to the perfect venue that meets your needs and matches your taste</p>
-
-        <input type="submit" value="Start Search" class="js-start-search search-button">
+        <div class="search-button">
+        <input type="submit" value="Start Search" class="js-start-search">
+        </div>
     </form>
 </div>
 </section>`;
@@ -24,6 +25,7 @@ const startPage = `<section class="container" id="js-startPage">
 const searchPage = 
 `<div class="container">
 <div class="item">
+
     <form id="js-search-form" class="search-form">
         <label for="categories">Search your Venue</label>
         <select name="categories" id="js-categories" >
@@ -43,12 +45,12 @@ const searchPage =
 
         <label for="options">Options</label>
         <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="3"> 
-
+        <div class="start-button">
         <input type="submit" id="js-search" value="Search">
+        </div>        
     </form>
 
 </div>
-
 <div class="result-list item item-double" id='js-results' hidden>
     <p>Results</p>
      <ul id="js-result-list" class="result-ul">
@@ -200,7 +202,7 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
     for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
         $('#js-result-list').append(`
             <li>  
-                <div class="container">
+                <div class="container result-container">
                     <div class="item">
                         <img src="${photoUri}" alt="Picture of venue">
                     </div>
