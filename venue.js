@@ -49,8 +49,9 @@ const searchPage =
 
 </div>
 
-<div class="result-list item-double" id='js-results' hidden>
-     <ul id="js-result-list">
+<div class="result-list item item-double" id='js-results' hidden>
+    <p>Results</p>
+     <ul id="js-result-list" class="result-ul">
     
      </ul>
 </div>
@@ -198,20 +199,25 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
     let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
     for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
         $('#js-result-list').append(`
-                <li>  
-                    <div class="item"> 
-                        <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
+            <li>  
+                <div class="container">
+                    <div class="item">
                         <img src="${photoUri}" alt="Picture of venue">
+                    </div>
+                    <div class="item result-details" >
+                        <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
                         <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
                         <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
                         <p> Visit: 
                             <a href="${checkURL(responseJsonForPhotos.response.venue.url)}">
                                 ${checkString(responseJsonForPhotos.response.venue.url)}
-                            </a>
+                            </a>                           
                         </p>
+                        <hr/>
                     </div>
-                </li>
-            `);
+                </div>
+            </li>
+        `);
     }
     $('#js-results').removeAttr('hidden');
 }

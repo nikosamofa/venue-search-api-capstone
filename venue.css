@@ -31,22 +31,24 @@ header h1 {
 
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin: 10% 18%;
     background-color: rgba(247, 241, 241, 0.842);
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
 }
 
 .item {
     flex: 1;
-    padding: 10px;
+    margin: 10px;
 }
 
 .item-double {
     flex: 2;
     margin: 10px;
+    width: 0%;
+    padding: 10px;
 }
 
 .start-form legend {
@@ -84,22 +86,52 @@ input {
     cursor: pointer;
 }
 
-#js-result-list img {
+
+.result-ul img {
     width: 100%;
-    height: 50%;
+    border-radius: 10px;
+    
+
 }
+
+.result-ul {
+    padding-inline-start: 0px;
+}
+
+
 
 div.result-list {
     height: 500px;
-    width: 50%;
+    width: 100%;
     FLOAT: left;
-    margin-left: 5%;
-    padding: 1%;
+    margin-left: 1%;
+    
     overflow: scroll;
+    
 }
 
 
+.result-ul li h3, p{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
 
+
+.result-ul li p{
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+}
+
+.result-ul li {
+    list-style: none;
+
+}
+
+
+.result-ul li div, .reuslt-details{
+    margin: 0 auto;
+
+}
 .search-form input[type="text"], input[type="number"], select {
     width: 100%;
     padding: 12px 20px;
@@ -110,22 +142,49 @@ div.result-list {
     font-family: 'Open Sans', sans-serif;
 }
 
-.search-form label{
+.search-form label {
     font-family: 'Luckiest Guy', cursive;
 }
-
 
 @media all and (min-width: 800px) {
     section {
         padding: 0 0%;
     }
-    .group {
-        flex-direction: row;
-    }
-    .container {
-        flex-direction: row;
-    }
-    .item, .item-double {
-        flex-direction: row;
-    }
+
+
+.container {
+    flex-direction: row;
+    padding: 10px;
+    margin: 5% 9%;
+    
+}
+.result-ul img {
+    width: 100%;
+    border-radius: 10px;
+    
+
+}
+.item-double {
+    flex: 2;
+    margin: 10px;
+    width: 0%;
+    padding: 50px;
+}
+.search-form{
+    padding-inline-end: 30px;
+    padding-inline-start: 30px;
+    background-color: yellow;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+    width: px;
+}
+
+.item-double {
+    flex: 2;
+    margin: 10px;
+    width: 0%;
+    padding: 10px;
+}
+
 }
