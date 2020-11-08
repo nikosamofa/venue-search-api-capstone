@@ -191,6 +191,10 @@ div.result-list {
     border-color: black;
     margin: 0 auto;
 }
+.result-list p{
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 28px;
+}
 
 /*------- Media query--------- */
 
