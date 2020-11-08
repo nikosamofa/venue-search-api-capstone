@@ -50,7 +50,7 @@ API Documentation details:
 :-------------------------:
 ![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
 Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
+![Search Page](/github-images/screenshots/search-page-screenshot.png)
 
 ## 8. Development Roadmap (to do later)
 This is v1.0 of the app, but future enhancements are expected to include:
