@@ -22,8 +22,8 @@ const startPage = `<section class="container" id="js-startPage">
 
 
 //page 2 search page
-const searchPage = 
-`<div class="container">
+const searchPage =
+    `<div class="container">
 <div class="item">
 
     <form id="js-search-form" class="search-form">
@@ -87,7 +87,6 @@ function venueSearch() {
         const numOfOptions = $('#js-options').val();
         console.log(place, withinRadius, category, numOfOptions);
         getVenues(category, place, withinRadius, numOfOptions)
-
     })
 }
 
@@ -163,7 +162,6 @@ function Results(responseJsonForDetails) {
                 })
                 .catch(error => console.log(error));
         }
-
     }
 };
 
@@ -181,7 +179,7 @@ function checkString(inputString) {
 }
 
 
-//returns / if the url is NOT valid
+//returns if the url is NOT valid
 function checkURL(inputURL) {
     let outputURL = inputURL;
     if (inputURL === undefined) {
@@ -194,6 +192,7 @@ function checkURL(inputURL) {
 }
 
 
+//function to display the results
 function photoURL(responseJsonForPhotos, responseJsonForDetails) {
     const photoPrefix = `${responseJsonForPhotos.response.venue.bestPhoto.prefix}`;
     const photoSuffix = `${responseJsonForPhotos.response.venue.bestPhoto.suffix}`;
@@ -212,7 +211,7 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
                         <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
                         <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
                         <p> Visit: 
-                            <a href="${checkURL(responseJsonForPhotos.response.venue.url)}">
+                            <a href="${checkURL(responseJsonForPhotos.response.venue.url)}" target="_blank">
                                 ${checkString(responseJsonForPhotos.response.venue.url)}
                             </a>                           
                         </p>
