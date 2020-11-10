@@ -45,7 +45,7 @@ const searchPage =
         <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="2"> 
 
         <label for="options">Options</label>
-        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="10"> 
+        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="2"> 
         <div class="start-button">
         <input type="submit" id="js-search" value="Search">
         </div>        
@@ -127,7 +127,7 @@ function getVenues(category, place, withinRadius, numOfOptions) {
 };
 
 
-// function to display results and fetches results photos from the GET venue photos endpoint.
+// function to display results and fetches results photos from the venue details endpoint.
 function Results(responseJsonForDetails) {
 
     $('#js-result-list').empty();
@@ -143,11 +143,11 @@ function Results(responseJsonForDetails) {
             'client_id': `UUOCIAQLG2H1U0BBI1XWV3CX0T25YDKRHIRK2YDB41KHAD52`,
             'client_secret': `SR35X0IUEXOBKQHF5J1M5VXNCKQTKI45RVFHB0ZQBBF4TE2P`
         };
-        const queryString2 = queryFormat(param);
+        const queryStringForDetails = queryFormat(param);
 
         for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
 
-            const searchUrl2 = uri + responseJsonForDetails.response.venues[i].id + '?' + queryString2;
+            const searchUrl2 = uri + responseJsonForDetails.response.venues[i].id + '?' + queryStringForDetails;
             console.log(searchUrl2);
             fetch(searchUrl2)
                 .then(response => {
@@ -194,32 +194,37 @@ function checkURL(inputURL) {
 
 //function to display the results
 function photoURL(responseJsonForPhotos, responseJsonForDetails) {
-    const photoPrefix = `${responseJsonForPhotos.response.venue.bestPhoto.prefix}`;
-    const photoSuffix = `${responseJsonForPhotos.response.venue.bestPhoto.suffix}`;
-    const photoWidth = `${responseJsonForPhotos.response.venue.bestPhoto.width}`;
-    const photoHeight = `${responseJsonForPhotos.response.venue.bestPhoto.height}`;
-    let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+
     for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
-        $('#js-result-list').append(`
-            <li>  
-                <div class="container result-container">
-                    <div class="item">
-                        <img src="${photoUri}" alt="Picture of venue">
-                    </div>
-                    <div class="item result-details" >
-                        <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
-                        <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
-                        <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
-                        <p> Visit: 
-                            <a href="${checkURL(responseJsonForPhotos.response.venue.url)}" target="_blank">
-                                ${checkString(responseJsonForPhotos.response.venue.url)}
-                            </a>                           
-                        </p>
-                        <hr/>
-                    </div>
-                </div>
-            </li>
-        `);
+
+        if(responseJsonForDetails.response.venues[i].id === responseJsonForPhotos.response.venue.id){
+                const photoPrefix = `${responseJsonForPhotos.response.venue.bestPhoto.prefix}`;
+                const photoSuffix = `${responseJsonForPhotos.response.venue.bestPhoto.suffix}`;
+                const photoWidth = `${responseJsonForPhotos.response.venue.bestPhoto.width}`;
+                const photoHeight = `${responseJsonForPhotos.response.venue.bestPhoto.height}`;
+                let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+                $('#js-result-list').append(`
+                    <li>  
+                        <div class="container result-container">
+                            <div class="item">
+                                <img src="${photoUri}" alt="Picture of venue">
+                            </div>
+                            <div class="item result-details" >
+                                <h3> ${responseJsonForDetails.response.venues[i].name}</h3>
+                                <p>${checkString(responseJsonForPhotos.response.venue.description)}</p>
+                                <p>${responseJsonForDetails.response.venues[i].location.formattedAddress}</p>
+                                <p> Visit: 
+                                    <a href="${checkURL(responseJsonForPhotos.response.venue.url)}" target="_blank">
+                                        ${checkString(responseJsonForPhotos.response.venue.url)}
+                                    </a>                           
+                                </p>
+                                <hr/>
+                            </div>
+                        </div>
+                    </li>
+                `);
+            }
+          
     }
     $('#js-results').removeAttr('hidden');
 }
