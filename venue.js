@@ -42,10 +42,10 @@ const searchPage =
         <input type="text" name="location" id="js-location" placeholder="New York" value="Baltimore">
 
         <label for="radius">Radius of</label>
-        <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="2"> 
+        <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="5"> 
 
         <label for="options">Options</label>
-        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="2"> 
+        <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="10"> 
         <div class="start-button">
         <input type="submit" id="js-search" value="Search">
         </div>        
