@@ -123,7 +123,7 @@ function getVenues(category, place, withinRadius, numOfOptions) {
             else { throw new Error(response.statusText) }
         })
         .then(responseJson => Results(responseJson))
-        .catch(error => console.log(error));
+        .catch(error => console.log(error), alert("Request could not be completed. Try again later."));
 };
 
 
