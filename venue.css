@@ -105,6 +105,8 @@ header h1 {
     padding-bottom: 20px;
 }
 
+
+
 .start-form p {
     text-align: justify;
     font-family: 'Open Sans', sans-serif;
@@ -271,6 +273,12 @@ div.result-list {
         width: 200px;
         border-color: black;
         margin: 0 auto;
+    }
+
+    .start-form .intro{
+        padding-left: 80px;
+        padding-right: 80px;
+        text-align: justify;
     }
 }
 
