@@ -197,13 +197,13 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
 
     for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
 
-        if(responseJsonForDetails.response.venues[i].id === responseJsonForPhotos.response.venue.id){
-                const photoPrefix = `${responseJsonForPhotos.response.venue.bestPhoto.prefix}`;
-                const photoSuffix = `${responseJsonForPhotos.response.venue.bestPhoto.suffix}`;
-                const photoWidth = `${responseJsonForPhotos.response.venue.bestPhoto.width}`;
-                const photoHeight = `${responseJsonForPhotos.response.venue.bestPhoto.height}`;
-                let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
-                $('#js-result-list').append(`
+        if (responseJsonForDetails.response.venues[i].id === responseJsonForPhotos.response.venue.id) {
+            const photoPrefix = `${responseJsonForPhotos.response.venue.bestPhoto.prefix}`;
+            const photoSuffix = `${responseJsonForPhotos.response.venue.bestPhoto.suffix}`;
+            const photoWidth = `${responseJsonForPhotos.response.venue.bestPhoto.width}`;
+            const photoHeight = `${responseJsonForPhotos.response.venue.bestPhoto.height}`;
+            let photoUri = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+            $('#js-result-list').append(`
                     <li>  
                         <div class="container result-container">
                             <div class="item">
@@ -223,8 +223,8 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
                         </div>
                     </li>
                 `);
-            }
-          
+        }
+
     }
     $('#js-results').removeAttr('hidden');
 }
