@@ -1,7 +1,7 @@
 'use strict';
 
-const url = 'https://api.foursquare.com/v2/venues/search'
-const uri = 'https://api.foursquare.com/v2/venues/'
+const url = 'https://api.foursquare.com/v2/venues/search';
+const uri = 'https://api.foursquare.com/v2/venues/';
 
 // page const variables to be rendered 
 //page 1 landing page
@@ -29,24 +29,23 @@ const searchPage =
 <div class="item">
 
     <form id="js-search-form" class="search-form">
-        <label for="categories">Search your Venue</label>
+        <label for="js-categories">Search your Venue</label>
         <select name="categories" id="js-categories" >
             <option value="4d4b7104d754a06370d81259">Art & Entertainment</option>
             <option value="4bf58dd8d48988d1ed941735">Spa</option>            
             <option value="4bf58dd8d48988d121941735">Lounge</option>
             <option value="4d4b7105d754a06374d81259">Restaurants</option>
             <option value="4bf58dd8d48988d11e941735">Cocktail Bar</option>
-            <option value="4bf58dd8d48988d120941735">Karaoke</option>
-            
+            <option value="4bf58dd8d48988d120941735">Karaoke</option>            
         </select>
 
-        <label for="location">City</label>
+        <label for="js-location">City</label>
         <input type="text" name="location" id="js-location" placeholder="New York" value="Baltimore">
 
-        <label for="radius">Radius of</label>
+        <label for="js-radius">Radius of</label>
         <input type="number" name="radius"min="1"  max="60" id="js-radius" placeholder="miles" value="5"> 
 
-        <label for="options">Options</label>
+        <label for="js-options">Options</label>
         <input type="number" name="options" min="1" max="10" id="js-options" placeholder="10" value="10"> 
         <div class="start-button">
         <input type="submit" id="js-search" value="Search">
@@ -67,7 +66,7 @@ const searchPage =
 //a function that loads the landing page into the DOM when loaded with the begin search button
 function landingPage() {
     $('#js-main-body').html(startPage)
-};
+}
 
 
 //Event function that changes HTML content  and renders the search page when the begin search button is clicked 
@@ -125,8 +124,8 @@ function getVenues(category, place, withinRadius, numOfOptions) {
             else { throw new Error(response.statusText) }
         })
         .then(responseJson => Results(responseJson))
-        .catch(error => console.log(error), alert("Request could not be completed. Try again later."));
-};
+        .catch(error => alert("Request could not be completed. Try again later."));
+}
 
 
 // function to display results and fetches results photos from the venue details endpoint.
@@ -224,7 +223,7 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
                             </div>
                         </div>
                     </li>
-                `);
+                `)
         }
 
     }
@@ -239,5 +238,5 @@ function all() {
     landingPage();
     changePage();
     venueSearch();
-};
+}
 $(all);
