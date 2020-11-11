@@ -83,7 +83,7 @@ function changePage() {
 function venueSearch() {
     $('#js-main-body').on('submit', '.search-form', event => {
         event.preventDefault();
-        const place = $('#js-location').val()
+        const place = $('#js-location').val();
         const withinRadius = Number($('#js-radius').val()) * 1609.344;
         const category = $('#js-categories').val();
         const numOfOptions = $('#js-options').val();
@@ -111,7 +111,7 @@ function getVenues(category, place, withinRadius, numOfOptions) {
         categoryId: category,
         'client_id': `UUOCIAQLG2H1U0BBI1XWV3CX0T25YDKRHIRK2YDB41KHAD52`,
         'client_secret': `SR35X0IUEXOBKQHF5J1M5VXNCKQTKI45RVFHB0ZQBBF4TE2P`
-    };
+    }
 
     const queryString = queryFormat(params);
     const searchUrl = url + '?' + queryString;
@@ -144,7 +144,7 @@ function Results(responseJsonForDetails) {
             v: 20201020,
             'client_id': `UUOCIAQLG2H1U0BBI1XWV3CX0T25YDKRHIRK2YDB41KHAD52`,
             'client_secret': `SR35X0IUEXOBKQHF5J1M5VXNCKQTKI45RVFHB0ZQBBF4TE2P`
-        };
+        }
         const queryStringForDetails = queryFormat(param);
 
         for (let i = 0; i < responseJsonForDetails.response.venues.length; i++) {
@@ -160,12 +160,12 @@ function Results(responseJsonForDetails) {
                 })
                 .then(responseJsonForPhotos => {
                     console.log(responseJsonForPhotos);
-                    photoURL(responseJsonForPhotos, responseJsonForDetails);
+                    photoURL(responseJsonForPhotos, responseJsonForDetails)
                 })
                 .catch(error => console.log(error));
         }
     }
-};
+}
 
 
 //returns empty string if the string is NOT valid

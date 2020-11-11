@@ -105,8 +105,6 @@ header h1 {
     padding-bottom: 20px;
 }
 
-
-
 .start-form p {
     text-align: justify;
     font-family: 'Open Sans', sans-serif;
@@ -274,12 +272,11 @@ div.result-list {
         border-color: black;
         margin: 0 auto;
     }
-
-    .start-form .intro{
+    .start-form .intro {
         padding-left: 80px;
         padding-right: 80px;
         text-align: justify;
-    }
+    } 
 }
 
 /*large desktop*/
@@ -287,5 +284,5 @@ div.result-list {
 @media only screen and (min-width: 1600px) {
     body {
         border: 3px solid rgba(255, 255, 0, 0);
-    }
-}
+    };
+};
