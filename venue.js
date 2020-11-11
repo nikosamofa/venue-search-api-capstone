@@ -51,7 +51,6 @@ const searchPage =
         <input type="submit" id="js-search" value="Search">
         </div>        
     </form>
-
 </div>
 <div class="result-list item item-double" id='js-results' hidden>
     <p>Results</p>
