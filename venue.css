@@ -195,6 +195,11 @@ div.result-list {
     font-size: 28px;
 }
 
+.hidden{
+
+    display: none;
+}
+
 /*------- Media query--------- */
 
 /*iPhone portrait*/

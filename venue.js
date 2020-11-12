@@ -36,7 +36,8 @@ const searchPage =
             <option value="4bf58dd8d48988d121941735">Lounge</option>
             <option value="4d4b7105d754a06374d81259">Restaurants</option>
             <option value="4bf58dd8d48988d11e941735">Cocktail Bar</option>
-            <option value="4bf58dd8d48988d120941735">Karaoke</option>            
+            <option value="4bf58dd8d48988d120941735">Karaoke</option>
+            <option value="4bf58dd8d48988d119941735">Hookah Bar</option>            
         </select>
 
         <label for="js-location">City</label>
@@ -52,7 +53,7 @@ const searchPage =
         </div>        
     </form>
 </div>
-<div class="result-list item item-double" id='js-results' hidden>
+<div class="result-list item item-double hidden" id='js-results' >
     <p>Results</p>
      <ul id="js-result-list" class="result-ul">
     
@@ -64,7 +65,7 @@ const searchPage =
 
 //a function that loads the landing page into the DOM when loaded with the begin search button
 function landingPage() {
-    $('#js-main-body').html(startPage)
+    $('#js-main-body').html(startPage);
 }
 
 
@@ -73,7 +74,7 @@ function changePage() {
     $('#js-main-body').on('click', '#js-start-form', event => {
         event.preventDefault();
         console.log('test');
-        $('#js-main-body').html(searchPage)
+        $('#js-main-body').html(searchPage);
     })
 }
 
@@ -86,7 +87,7 @@ function venueSearch() {
         const category = $('#js-categories').val();
         const numOfOptions = $('#js-options').val();
         console.log(place, withinRadius, category, numOfOptions);
-        getVenues(category, place, withinRadius, numOfOptions)
+        getVenues(category, place, withinRadius, numOfOptions);
     })
 }
 
@@ -118,7 +119,7 @@ function getVenues(category, place, withinRadius, numOfOptions) {
     fetch(searchUrl)
         .then(response => {
             if (response.ok) {
-                return response.json()
+                return response.json();
             }
             else { throw new Error(response.statusText) }
         })
@@ -135,7 +136,7 @@ function Results(responseJsonForDetails) {
         $('#js-result-list').append(
             `<li>            
             <p>No results</p>
-            </li>`)
+            </li>`);
     }
     else {
         const param = {
@@ -152,13 +153,13 @@ function Results(responseJsonForDetails) {
             fetch(searchUrl2)
                 .then(response => {
                     if (response.ok) {
-                        return response.json()
+                        return response.json();
                     }
                     else { throw new Error(response.statusText) }
                 })
                 .then(responseJsonForPhotos => {
                     console.log(responseJsonForPhotos);
-                    photoURL(responseJsonForPhotos, responseJsonForDetails)
+                    photoURL(responseJsonForPhotos, responseJsonForDetails);
                 })
                 .catch(error => console.log(error));
         }
@@ -226,7 +227,7 @@ function photoURL(responseJsonForPhotos, responseJsonForDetails) {
         }
 
     }
-    $('#js-results').removeAttr('hidden');
+    $('#js-results').removeClass('hidden');
 }
 
 
